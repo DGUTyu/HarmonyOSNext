@@ -4,6 +4,7 @@
     "pages/01/FirstPageCase",
     "pages/01/FirstCompPage",
     "pages/01/RowColumnCase",
-    "pages/01/CustomCompCase"
+    "pages/01/CustomCompCase",
+    "pages/01/DouYinStackCase"
   ]
 }
