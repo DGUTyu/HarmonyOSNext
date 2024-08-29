@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/01/FirstPageCase"
+    "pages/01/FirstPageCase",
+    "pages/01/FirstCompPage"
   ]
 }
