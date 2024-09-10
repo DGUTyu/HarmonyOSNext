@@ -2,7 +2,7 @@
 @Component
 struct FlexCase {
   build() {
-    // 弹性布局
+    // 弹性布局 Flex布局设置属性设置方向 是通过参数的，并非通过属性
     // Flex是一个容器组件，和Row,Column的区别是可以自动换行,默认从左往右水平排列
     // 参数：写在小括号里面的内容
     Flex({justifyContent: FlexAlign.Center, wrap: FlexWrap.Wrap}) {

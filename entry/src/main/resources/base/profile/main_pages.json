@@ -7,6 +7,7 @@
     "pages/01/CustomCompCase",
     "pages/01/DouYinStackCase",
     "pages/01/BaiduCase",
-    "pages/02/FlexCase"
+    "pages/02/FlexCase",
+    "pages/02/GridCase"
   ]
 }
