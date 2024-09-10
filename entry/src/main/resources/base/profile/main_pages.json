@@ -9,6 +9,8 @@
     "pages/01/BaiduCase",
     "pages/02/FlexCase",
     "pages/02/GridCase",
-    "pages/02/RelativeCase"
+    "pages/02/RelativeCase",
+    "pages/02/ScrollCase",
+    "pages/02/ScrollCase02"
   ]
 }
