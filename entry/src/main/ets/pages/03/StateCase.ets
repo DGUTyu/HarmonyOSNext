@@ -136,6 +136,8 @@ struct timer {
       .layoutWeight(1)
       .justifyContent(FlexAlign.Center)
       //JSON.stringify把一个对象转成字符串的形式
+      //打印出来的 是 "_num":{"subscribers_":
+      //鸿蒙中，如果打印出来的信息中有下划线的变量都是它自动帮你处理了。加上了@State，它会帮你包裹一层，后续你用到的是包裹后的变量
       Text(JSON.stringify(this))
     }
   }
