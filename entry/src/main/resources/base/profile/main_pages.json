@@ -13,6 +13,7 @@
     "pages/02/ScrollCase",
     "pages/02/ScrollCase02",
     "pages/02/EventCase",
-    "pages/02/OnAreaChangeCase"
+    "pages/02/OnAreaChangeCase",
+    "pages/03/StateCase"
   ]
 }
