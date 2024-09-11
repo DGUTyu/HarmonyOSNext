@@ -5,6 +5,7 @@ import { promptAction } from '@kit.ArkUI'
 struct LoginCase {
   //@State
   username: string = ''
+  //@State
   password: string = ''
 
   login() {
@@ -21,11 +22,18 @@ struct LoginCase {
     }
   }
 
+  //当用户名和密码为空时，不让用户点按钮。不过要加上@State
+  getBtnEnable(){
+    return !!this.username && !!this.password
+  }
+
   build() {
     Column({ space: 20 }) {
       TextInput({ placeholder: '账号', text: this.username })
         .width('80%')
         .onChange((value) => {
+          // 监听系统组件的事件的话  回调函数的参数都是有具体类型  一般的话不用给类型
+          console.log(value)
           // 事件产生的UI更新不会同步给数据，需要手动赋值，否则toast的值还是为空的
           this.username = value
           promptAction.showToast({
@@ -39,6 +47,8 @@ struct LoginCase {
       TextInput({ placeholder: '密码', text: this.password })
         .width('80%')
         .onChange((value) => {
+          // 监听系统组件的事件的话  回调函数的参数都是有具体类型  一般的话不用给类型
+          console.log(`密码:${value}`)
           this.password = value
         })
 
@@ -49,6 +59,8 @@ struct LoginCase {
           // 写法2：组件声明方法调用
           this.login()
         })
+          // 隐式转化 ""
+        .enabled(this.getBtnEnable())
     }
     .height('100%')
     .width('100%')
