@@ -15,6 +15,7 @@
     "pages/02/EventCase",
     "pages/02/OnAreaChangeCase",
     "pages/03/StateCase",
-    "pages/03/LoginCase"
+    "pages/03/LoginCase",
+    "pages/03/AddressCase"
   ]
 }
