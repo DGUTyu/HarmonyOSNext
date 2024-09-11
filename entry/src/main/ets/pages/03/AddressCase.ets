@@ -1,3 +1,16 @@
+import { promptAction } from '@kit.ArkUI'
+
+/**
+ * 系统可观测的数据和行为变化
+ * 当装饰的数据类型为Boolean、string、number类型时，可以观察到数值的变化。
+ * 当装饰的数据类型为class或者Object时，可以观察到自身的赋值的变化，和其属性赋值的变化，即Object.keys(observedObject)返回的所有属性。
+ * 当装饰的对象是array时，可以观察到数组本身的赋值和添加、删除、更新数组的变化。
+ * 数组自身的赋值可以观察到。如数组赋值 this.title=[new Model(2)];
+ * 数组项的赋值可以观察到。如数组项赋值 this.title[0]=new Model(2);
+ * 删除数组项可以观察到。如数组项更改 this.title.pop();
+ * 新增数组项可以观察到。如数组项更改 this.title.push(new Model(12));
+ * 数组项中属性的赋值观察不到。如嵌套的属性赋值观察不到 this.title[0].value = 6;
+ */
 @Entry
 @Component
 struct AddressCase {
@@ -49,10 +62,10 @@ struct AddressCase {
 
       Row({ space: 10 }) {
         Text('性别：')
-        Select([{ value: '男' }, { value: '女' }]).layoutWeight(1)
-          //.selected(this.userInfo.gender) //会报错，应该传number | Resource
-          //第一个下标为0
-          //.selected(0)
+        Select([{ value: '男' }, { value: '女' }])
+          .layoutWeight(1)//.selected(this.userInfo.gender) //会报错，应该传number | Resource
+            //第一个下标为0
+            //.selected(0)
           .value(this.userInfo.gender)
       }
 
@@ -77,7 +90,11 @@ struct AddressCase {
 
         Button('修改地址').onClick(() => {
           // 必须遵循原则：只有自己或者第一层发生变化@State才能检测到！！！
+          // 所有的鸿蒙的更新机制-关于对象层的， 所有的监听机制都只能监听到Object.keys(对象)中的可见属性，但凡超过一层，是监测不到变化的。
           this.userInfo.address.area = '高新'
+          promptAction.showToast({
+            message: JSON.stringify((this.userInfo))
+          })
           //数据变了没？  this.userInfo.address === { province:陕西，city：西安，area:高新 }
           // new IAddressModel(this.userInfo.address)会得到一个数据一模一样的新对象
           // 把这个新对象再赋值给原来的地方就实现了改了第一层
