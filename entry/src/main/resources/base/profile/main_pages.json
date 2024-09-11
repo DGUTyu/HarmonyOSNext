@@ -16,6 +16,7 @@
     "pages/02/OnAreaChangeCase",
     "pages/03/StateCase",
     "pages/03/LoginCase",
-    "pages/03/AddressCase"
+    "pages/03/AddressCase",
+    "pages/03/MvvmCase"
   ]
 }
