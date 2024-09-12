@@ -18,6 +18,10 @@
     "pages/03/LoginCase",
     "pages/03/AddressCase",
     "pages/03/MvvmCase",
-    "pages/04/CommonStyleCase"
-  ]
+    "pages/04/CommonStyleCase",
+    "pages/04/PxVpFpLpxCase"
+  ],
+  "window": {
+    "designWidth": 720
+  }
 }
