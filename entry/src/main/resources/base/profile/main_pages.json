@@ -17,6 +17,7 @@
     "pages/03/StateCase",
     "pages/03/LoginCase",
     "pages/03/AddressCase",
-    "pages/03/MvvmCase"
+    "pages/03/MvvmCase",
+    "pages/04/CommonStyleCase"
   ]
 }
