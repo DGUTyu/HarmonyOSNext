@@ -11,6 +11,10 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "My_Name",
+      "value": "路遥"
     }
   ]
 }
