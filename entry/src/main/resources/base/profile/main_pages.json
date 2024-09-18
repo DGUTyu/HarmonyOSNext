@@ -22,7 +22,8 @@
     "pages/04/PxVpFpLpxCase",
     "pages/04/LayoutCase",
     "pages/04/ImageCase",
-    "pages/04/ResourceCase"
+    "pages/04/ResourceCase",
+    "pages/04/CommentCase"
   ],
   "window": {
     "designWidth": 720
