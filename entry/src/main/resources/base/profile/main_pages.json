@@ -25,7 +25,8 @@
     "pages/04/ResourceCase",
     "pages/04/CommentCase",
     "pages/04/StyleCase",
-    "pages/04/ExtendCase"
+    "pages/04/ExtendCase",
+    "pages/05/StateStyleCase"
   ],
   "window": {
     "designWidth": 720
