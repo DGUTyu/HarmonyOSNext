@@ -28,7 +28,8 @@
     "pages/04/ExtendCase",
     "pages/05/StateStyleCase",
     "pages/05/ConditionCase",
-    "pages/05/Condition2Case"
+    "pages/05/Condition2Case",
+    "pages/05/LoadingCase"
   ],
   "window": {
     "designWidth": 720
