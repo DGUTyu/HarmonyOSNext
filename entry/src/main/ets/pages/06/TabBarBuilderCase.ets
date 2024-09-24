@@ -35,18 +35,23 @@ struct TabBarBuilderCase {
     Column({ space: 6 }) {
       Image(item.icon)
         .width(20)
-        .aspectRatio(1)
-        .fillColor('#ff00ff0f')
+        .aspectRatio(1)//拿属性判断比拿下标判断会更严谨一些
+        .fillColor(item.name === this.list[this.currentIndex].name ? '#ff00ff0f' : '#ccc')
       Text(item.title)
         .fontSize(12)
-        .fontColor('#ff00ff0f')
+        .fontColor(item.name === this.list[this.currentIndex].name ? '#ff00ff0f' : '#ccc')
     }
   }
+
+  @State
+  currentIndex: number = 0
 
   build() {
     Column() {
       //TabsBaseDemo()
-      Tabs({ barPosition: BarPosition.End }) {
+      //方法1：使用引用传递
+      //方法2：使用组件提供的方法
+      Tabs({ barPosition: BarPosition.End, index: $$this.currentIndex }) {
         ForEach(this.list, (item: TabInterface) => {
           TabContent() {
             Text(item.name)
