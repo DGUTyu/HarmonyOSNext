@@ -12,7 +12,7 @@ struct BuilderParamCase02 {
       //支持多builderParam的写法
       //这种写法不支持预览，但是模拟器上是正常的
       BuilderParamChild02({
-        MyRow:()=>{
+        MyRow: () => {
           this.MyRow()
         }
       })
@@ -31,13 +31,18 @@ struct BuilderParamCase02 {
 
 @Component
 struct BuilderParamChild02 {
+  @Builder
+  defaultRow() {
+    Image($r('sys.media.ohos_ic_compnent_titlebar_back'))
+  }
+
   @BuilderParam
   @Require
   //函数类型
-  MyRow: () => void
+  MyRow: () => void = this.defaultRow
 
   build() {
-    Column(){
+    Column() {
       Text('这是子组件的')
       this.MyRow()
     }

@@ -1,11 +1,16 @@
 @Preview
 @Component
 struct HmList {
+  @Builder
+  defaultRow() {
+    Image($r('sys.media.ohos_ic_compnent_titlebar_back'))
+  }
+
   @State
   // 不知道传入的是什么类型 统一认为是object
   list: object[] = []
   @BuilderParam
-  renderItem: (obj: object) => void
+  renderItem: (obj: object) => void = this.defaultRow
 
   build() {
     // Grid List WaterFlow
