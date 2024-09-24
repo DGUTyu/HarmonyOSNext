@@ -36,7 +36,8 @@
     "pages/ZhiHu/ZhiHu",
     "pages/06/BuilderCase",
     "pages/06/BuilderCase01",
-    "pages/06/BuilderCase02"
+    "pages/06/BuilderCase02",
+    "pages/06/TabBarBuilderCase"
   ],
   "window": {
     "designWidth": 720
