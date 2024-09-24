@@ -33,7 +33,8 @@
     "pages/05/ForEachCase",
     "pages/05/ForEachCase2",
     "pages/05/RefreshLoadCase",
-    "pages/ZhiHu/ZhiHu"
+    "pages/ZhiHu/ZhiHu",
+    "pages/06/BuilderCase"
   ],
   "window": {
     "designWidth": 720
