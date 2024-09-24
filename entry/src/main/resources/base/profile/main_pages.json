@@ -44,7 +44,8 @@
     "pages/07/PropCase",
     "pages/07/LinkCase",
     "pages/07/ChildCompCase",
-    "pages/07/ProvideCase"
+    "pages/07/ProvideCase",
+    "pages/07/ConsumeRenameCase"
   ],
   "window": {
     "designWidth": 720
