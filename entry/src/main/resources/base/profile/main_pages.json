@@ -39,7 +39,8 @@
     "pages/06/BuilderCase02",
     "pages/06/TabBarBuilderCase",
     "pages/06/BuilderParamCase",
-    "pages/06/BuilderParamCase02"
+    "pages/06/BuilderParamCase02",
+    "pages/06/BuilderParamCase03"
   ],
   "window": {
     "designWidth": 720
