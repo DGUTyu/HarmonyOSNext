@@ -1,5 +1,6 @@
 import ZhComment from './components/ZhComment'
 import ZhHeader from './components/ZhHeader'
+import { promptAction } from '@kit.ArkUI'
 
 @Entry
 @Component
@@ -90,14 +91,69 @@ struct ZhiHu {
   // 1.简单数据类型(值类型传递)  -》 重新创建一个值(和父组件没有关联)
   // 2.引用数据类型传递(引用地址) -》 父子组件使用的是同一个对象
 
+  // 为什么要传递方法给子组件：
+  // 1.子组件不要修改父组件传递的数据
+  // 2.父组件的方法只能通过传递给子组件
+
+  // 父组件的数据父组件改。修改点赞数据
+  changeLike(id: number) {
+    // id通过id去查找当前是哪一个
+    // find是查找数组中满足条件的第一个元素！
+    // findIndex 查找数组中满足条的元素索引
+    // let 是申明变量(可以修改)
+    // const 是声明常量(不可以修改)
+    // index就是真正点击的那条数据
+    // index能找到0~数组的length-1
+    // index就是-1
+    let index = this.commentList.findIndex((item) => {
+      return item.id === id
+    })
+    if (index === -1) {
+      //在回复列表没有找到这条->上面的点赞
+      // 核心逻辑：为什么对象的第一层属性发生变化了，但是UI没更新？？？
+      // 因为父组件给子组件传递的值！！！传递只生效一次！！！
+      // 父组件更新没问题，但是子组件不会更新
+      if (this.commentContent.likeFlag) {
+        this.commentContent.likeNum--
+      } else {
+        this.commentContent.likeNum++
+      }
+      this.commentContent.likeFlag = !this.commentContent.likeFlag
+      promptAction.showToast({
+        message: '点赞了'
+      })
+    } else {
+      if (this.commentList[index].likeFlag) {
+        this.commentList[index].likeNum--
+      } else {
+        this.commentList[index].likeNum++
+      }
+      this.commentList[index].likeFlag = !this.commentList[index].likeFlag
+      promptAction.showToast({
+        message: '点赞了' + id
+      })
+      // 总结特点：只能修改自身或第一层数据才能让UI发生变化！！！
+      // 要让第一层数据发生变化！！！
+      // 方法1：改变第一层。图片会闪
+      //this.commentList[index] = new ReplyItemModel(this.commentList[index])
+      // 方法2：改变自己。删除后再添加上去。图片会闪
+      this.commentList.splice(index, 1, new ReplyItemModel(this.commentList[index]))
+    }
+  }
+
   build() {
     Column() {
       //1.头部
       ZhHeader()
+      // 父组件更新没问题，但是第一个评论组件（子组件）不会更新。需要给子组件的replyItem加上@State（取巧，引用类型）
+      Text(JSON.stringify(this.commentContent))
       //2.评论组件
       //ZhComment()
       ZhComment({
-        replyItem: this.commentContent
+        replyItem: this.commentContent,
+        changeLike: (id: number) => {
+          this.changeLike(id)
+        }
       })
       //3.分割线
       Divider().strokeWidth(6).backgroundColor('#ececec')
@@ -121,7 +177,13 @@ struct ZhiHu {
             //组件传值：父组件的数据传递给子组用
             //子组件必须得声明过这个数才能进行传递！
             ZhComment({
-              replyItem: item
+              replyItem: item,
+              //声明函数记得用箭头函数。为了不改变this指向，用箭头函数包裹一下！！
+              //父组件接收
+              changeLike: (id: number) => {
+                //父组件给父组件的函数
+                this.changeLike(id)
+              }
             })
           }
         })
