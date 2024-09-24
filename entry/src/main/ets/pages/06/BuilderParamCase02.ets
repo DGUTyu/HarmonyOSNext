@@ -11,13 +11,17 @@ struct BuilderParamCase02 {
       //UI结构
       //支持多builderParam的写法
       //这种写法不支持预览，但是模拟器上是正常的
-      // BuilderParamChild02({
-      //   MyRow: this.MyRow
-      // })
+      BuilderParamChild02({
+        MyRow:()=>{
+          this.MyRow()
+        }
+      })
 
       //尾随闭包->只有一个builderParam
       BuilderParamChild02() {
         Text('这是我尾随闭包传进去的内容')
+        Image($r('app.media.b'))
+          .width(200)
       }
     }
     .height('100%')
@@ -33,6 +37,9 @@ struct BuilderParamChild02 {
   MyRow: () => void
 
   build() {
-    this.MyRow()
+    Column(){
+      Text('这是子组件的')
+      this.MyRow()
+    }
   }
 }
