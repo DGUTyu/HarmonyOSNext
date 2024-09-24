@@ -6,6 +6,7 @@ import ZhHeader from './components/ZhHeader'
 struct ZhiHu {
   // 评论回复的数据（对象数组）数据后续都会从接口获取到
   // 更新commentList是父组件的List产生了更新，重新渲染子组件
+  // 投机取巧的办法：利用父组件传递引用数据类型的特性实现！！！
   @State
   commentList: ReplyItemModel[] = [
     new ReplyItemModel({
@@ -84,6 +85,10 @@ struct ZhiHu {
     likeNum: 999999,
     likeFlag: false
   })
+
+  // 父组件->子组件传值：
+  // 1.简单数据类型(值类型传递)  -》 重新创建一个值(和父组件没有关联)
+  // 2.引用数据类型传递(引用地址) -》 父子组件使用的是同一个对象
 
   build() {
     Column() {
