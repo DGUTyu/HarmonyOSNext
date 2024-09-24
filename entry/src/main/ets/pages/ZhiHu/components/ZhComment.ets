@@ -18,7 +18,7 @@ struct ZhComment {
     Column() {
       Row({ space: 12 }) {
         //不变的会复用。注意看顶部评论和评论列表的时间戳
-        Text(Date.now().toString())
+        //Text(Date.now().toString())
         Image(this.replyItem.avatar)
           .width(40)
           .borderRadius(20)

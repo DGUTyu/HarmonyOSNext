@@ -1,6 +1,7 @@
 import ZhComment from './components/ZhComment'
 import ZhHeader from './components/ZhHeader'
 import { promptAction } from '@kit.ArkUI'
+import ZhReplyInput from './components/ZhReplyInput'
 
 @Entry
 @Component
@@ -141,12 +142,34 @@ struct ZhiHu {
     }
   }
 
+  publishContent(content: string) {
+    promptAction.showToast({
+      message: content
+    })
+    //添加完成之后需要滚动到列表顶部
+    this.commentList.unshift(new ReplyItemModel({
+      id: Math.random(),
+      avatar: 'https://foruda.gitee.com/avatar/1705232317138324256/1759638_itcast_panpu_1705232317.png!avatar30',
+      author: '路遥',
+      content: content,
+      //月份从0开始
+      //字符串填充，2位，补0
+      time: `${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${(new Date().getDate()).toString().padStart(2, '0')}`,
+      area: '深圳',
+      likeNum: 0,
+      likeFlag: false
+    }))
+    this.scroller.scrollEdge(Edge.Top)
+  }
+
+  scroller: Scroller = new Scroller()
+
   build() {
     Column() {
       //1.头部
       ZhHeader()
       // 父组件更新没问题，但是第一个评论组件（子组件）不会更新。需要给子组件的replyItem加上@State（取巧，引用类型）
-      Text(JSON.stringify(this.commentContent))
+      //Text(JSON.stringify(this.commentContent))
       //2.评论组件
       //ZhComment()
       ZhComment({
@@ -171,7 +194,7 @@ struct ZhiHu {
       // ForEach([1, 2, 3, 4, 5], () => {
       //   ZhComment()
       // })
-      List() {
+      List({ scroller: this.scroller }) {
         ForEach(this.commentList, (item: ReplyItem) => {
           ListItem() {
             //组件传值：父组件的数据传递给子组用
@@ -191,6 +214,12 @@ struct ZhiHu {
       .layoutWeight(1)
 
       //6.回复输入框
+      ZhReplyInput({
+        publishContent: (content: string) => {
+          this.publishContent(content)
+        }
+      })
+
     }.width('100%')
     .height('100%')
   }
