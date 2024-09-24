@@ -41,7 +41,8 @@
     "pages/06/BuilderParamCase",
     "pages/06/BuilderParamCase02",
     "pages/06/BuilderParamCase03",
-    "pages/07/PropCase"
+    "pages/07/PropCase",
+    "pages/07/LinkCase"
   ],
   "window": {
     "designWidth": 720
