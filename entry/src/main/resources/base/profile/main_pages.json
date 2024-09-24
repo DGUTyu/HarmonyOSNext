@@ -46,7 +46,8 @@
     "pages/07/ChildCompCase",
     "pages/07/ProvideCase",
     "pages/07/ConsumeRenameCase",
-    "pages/07/ProvideRenameCase"
+    "pages/07/ProvideRenameCase",
+    "pages/07/MusicControlDemo/MusicControlCase"
   ],
   "window": {
     "designWidth": 720
