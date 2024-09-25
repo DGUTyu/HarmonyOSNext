@@ -47,7 +47,8 @@
     "pages/07/ProvideCase",
     "pages/07/ConsumeRenameCase",
     "pages/07/ProvideRenameCase",
-    "pages/07/MusicControlDemo/MusicControlCase"
+    "pages/07/MusicControlDemo/MusicControlCase",
+    "pages/07/SelectImageDemo/SelectImageCase"
   ],
   "window": {
     "designWidth": 720
