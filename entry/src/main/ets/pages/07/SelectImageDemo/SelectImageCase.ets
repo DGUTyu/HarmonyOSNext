@@ -1,4 +1,5 @@
 import { SelectIcon } from './builders/SelectIcon';
+import MyCustomDialog from './components/MyCustomDialog';
 import SelectImage from './components/SelectImage';
 
 @Entry
@@ -25,14 +26,40 @@ struct SelectImageCase {
     }
   }
 
+  activeIndex: number = 0
+  // 注册自定义弹层，要给builder初始值，任意类型
+  myCustomDialogController: CustomDialogController = new CustomDialogController({
+    //builder后面的有时要括号，有时不用括号，如这里的要用括号 builder: MyCustomDialog()
+    builder: MyCustomDialog({
+      selectList: this.selectedList,
+      activeIndex: this.activeIndex
+    }),
+    //customStyle可不写，true为自定义样式
+    customStyle: true
+  })
+
   build() {
     Grid() {
       //回显已经勾选的图片
-      ForEach(this.selectedList, (item: ResourceStr) => {
+      ForEach(this.selectedList, (item: ResourceStr, index: number) => {
         //要用GridItem包裹一下
         GridItem() {
           Image(item).width('100%').aspectRatio(1)
         }
+        .onClick(() => {
+          //  打开自定义弹层
+          this.myCustomDialogController.open()
+          // 更新 activeIndex 为当前点击的下标，使得点击哪张就预览哪张
+          this.activeIndex = index
+
+          //写法2
+          //ForEach(this.selectedList, (item: ResourceStr) => {
+          // findIndex 查找数组中满足条的元素索引。find是查找数组中满足条件的第一个元素！
+          // this.activeIndex = this.selectedList.findIndex((it) => {
+          //   return item === it
+          // })
+
+        })
       })
       GridItem() {
         SelectIcon()
