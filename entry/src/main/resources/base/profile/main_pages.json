@@ -49,7 +49,8 @@
     "pages/07/ProvideRenameCase",
     "pages/07/MusicControlDemo/MusicControlCase",
     "pages/07/SelectImageDemo/SelectImageCase",
-    "pages/08/ObservedObjectLinkCase"
+    "pages/08/ObservedObjectLinkCase",
+    "pages/08/RequireCase"
   ],
   "window": {
     "designWidth": 720

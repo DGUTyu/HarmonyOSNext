@@ -255,3 +255,9 @@ struct ObjectLinkChild {
     }
   }
 }
+
+// 注意点
+// ● ObjectLink只能修饰被Observed修饰的class类型
+// ● Observed修饰的class的数据如果是复杂数据类型，需要采用赋值的方式才可以具备响应式特性-因为它只能监听到第一层
+// ● 如果出现复杂类型嵌套，只需要Observed我们需要的class即可
+// ● ObjectLink修饰符不能用在Entry修饰的组件中
