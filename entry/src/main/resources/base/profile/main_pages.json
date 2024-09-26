@@ -51,7 +51,8 @@
     "pages/07/SelectImageDemo/SelectImageCase",
     "pages/08/ObservedObjectLinkCase",
     "pages/08/RequireCase",
-    "pages/08/TrackCase"
+    "pages/08/TrackCase",
+    "pages/08/ReviewObjectLinkCase"
   ],
   "window": {
     "designWidth": 720
