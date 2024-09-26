@@ -6,13 +6,13 @@ struct ZhComment {
   // 可以断言是因为我明确知道父组件会给我item替换我的初始值
   // 不知道初始数据可以用 ：as 是断言  理解为欺骗编辑器
   // 投机取巧的办法：利用父组件传递引用数据类型的特性实现！！！
-  @State
+  @ObjectLink //解决点赞时，图片刷新问题
   //这里如果replyItem是基础数据类型，则行不通。@Link 才是真正实现这种方案的修饰符！！！
-  replyItem: ReplyItemModel = new ReplyItemModel({} as ReplyItem)
+  replyItem: ReplyItemModel
   // 这种声明函数的方式专门用于接收父组件传递方法
-  changeLike: (id: number) => void = () => {
-    // 子组件声明一个属性方法用于接收父组件可以修改点赞的真实方法
-  }
+  // changeLike: (id: number) => void = () => {
+  //   // 子组件声明一个属性方法用于接收父组件可以修改点赞的真实方法
+  // }
 
   build() {
     Column() {
@@ -55,7 +55,16 @@ struct ZhComment {
               //   this.replyItem.likeNum++
               // }
               //子组件传递给声明，父组件接收
-              this.changeLike(this.replyItem.id)
+              // this.changeLike(this.replyItem.id)
+
+              //己经使用了ObjectLink修饰了传递的数据，就可以直接修改让UI更新
+              if (this.replyItem.likeFlag) {
+                this.replyItem.likeFlag = false
+                this.replyItem.likeNum--
+              } else {
+                this.replyItem.likeFlag = true
+                this.replyItem.likeNum++
+              }
             })
           }
           .width('100%')

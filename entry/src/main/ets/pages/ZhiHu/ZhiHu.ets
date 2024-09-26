@@ -173,10 +173,10 @@ struct ZhiHu {
       //2.评论组件
       //ZhComment()
       ZhComment({
-        replyItem: this.commentContent,
-        changeLike: (id: number) => {
-          this.changeLike(id)
-        }
+        replyItem: this.commentContent
+        // changeLike: (id: number) => {
+        //   this.changeLike(id)
+        // }
       })
       //3.分割线
       Divider().strokeWidth(6).backgroundColor('#ececec')
@@ -203,10 +203,10 @@ struct ZhiHu {
               replyItem: item,
               //声明函数记得用箭头函数。为了不改变this指向，用箭头函数包裹一下！！
               //父组件接收
-              changeLike: (id: number) => {
-                //父组件给父组件的函数
-                this.changeLike(id)
-              }
+              // changeLike: (id: number) => {
+              //   //父组件给父组件的函数
+              //   this.changeLike(id)
+              // }
             })
           }
         })
