@@ -1,5 +1,3 @@
-import { promptAction } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct ObservedObjectLinkCase {
@@ -21,18 +19,19 @@ struct ObservedObjectLinkCase {
    */
 
   @State
-  goodsList: GoodItemLinkModel[] = [
-    new GoodItemLinkModel({
+  goodsList: GoodItemLinkModel2[] = [
+  // 2.传递给子组件的数据必须通过Observed修饰的类new出来
+    new GoodItemLinkModel2({
       name: '瓜子',
       price: 5,
       count: 0
     }),
-    new GoodItemLinkModel({
+    new GoodItemLinkModel2({
       name: '花生',
       price: 4,
       count: 0
     }),
-    new GoodItemLinkModel({
+    new GoodItemLinkModel2({
       name: '矿泉水',
       price: 3,
       count: 0
@@ -58,27 +57,41 @@ struct ObservedObjectLinkCase {
   // }
 
   //引用数据类型的子组件
-  @State
-  goodItem: GoodItemLinkModel = new GoodItemLinkModel({
-    name: '西瓜',
-    price: 1.5,
-    count: 5
-  })
+  // @State
+  // goodItem: GoodItemLinkModel = new GoodItemLinkModel({
+  //   name: '西瓜',
+  //   price: 1.5,
+  //   count: 5
+  // })
+  //
+  // build() {
+  //   Column({ space: 20 }) {
+  //     Text('父组件' + this.goodItem.count)
+  //     Button('修改父组件')
+  //       .onClick(() => {
+  //         this.goodItem.count++
+  //         //数据发生变化了，如果父组件的goodItem没有修饰符，则不会发生UI变化
+  //         promptAction.showToast({
+  //           message: '' + this.goodItem.count
+  //         })
+  //       })
+  //     Text(JSON.stringify(this.goodItem))
+  //     GoodItemLink2({
+  //       goodItem: this.goodItem
+  //     })
+  //   }
+  //   .height('100%')
+  //   .width('100%')
+  //   .padding(20)
+  // }
 
   build() {
     Column({ space: 20 }) {
-      Text('父组件' + this.goodItem.count)
-      Button('修改父组件')
-        .onClick(() => {
-          this.goodItem.count++
-          //数据发生变化了，如果父组件的goodItem没有修饰符，则不会发生UI变化
-          promptAction.showToast({
-            message: '' + this.goodItem.count
-          })
+      Text(JSON.stringify(this.goodsList))
+      ForEach(this.goodsList, (item: GoodItemLinkModel2) => {
+        ObjectLinkChild({
+          goodItem: item
         })
-      Text(JSON.stringify(this.goodItem))
-      GoodItemLink2({
-        goodItem: this.goodItem
       })
     }
     .height('100%')
@@ -190,5 +203,55 @@ export class GoodItemLinkModel {
     this.name = model.name
     this.price = model.price
     this.count = model.count
+  }
+}
+
+//类->可以生成对象
+// 1.给生成数据的类添加Observed修饰符
+@Observed
+export class GoodItemLinkModel2 implements GoodItemLinkType {
+  name: string = ''
+  price: number = 0
+  count: number = 0
+
+  constructor(model: GoodItemLinkType) {
+    this.name = model.name
+    this.price = model.price
+    this.count = model.count
+  }
+}
+
+@Component
+struct ObjectLinkChild {
+  // 不能用Link的原因：必须是@State修饰才能进行传递！！！
+  // 如果一个引用数据，希望传递后在子组件改自身或者第一层的时候可以产生UI的更新Observed + ObjectLik
+  // 3.对传递的数据使用ObjectLink进行修饰
+  // 如果修改了属性，只进行局部刷新(不会进行组件的销毁和创建)
+  // @ObjectLink
+  // goodItem: GoodItemLinkModel2 //{ 1.name:{ 2.age:} }
+
+  @ObjectLink
+  goodItem: GoodItemLinkModel2
+
+  build() {
+    Row({ space: 20 }) {
+      Text(this.goodItem.name)
+      Text('￥' + this.goodItem.price)
+      Image($r('sys.media.ohos_ic_public_remove_filled'))
+        .width(24)
+        .aspectRatio(1)
+        .onClick(() => {
+          this.goodItem.count--
+        })
+      Text(this.goodItem.count + '')
+      Image($r('sys.media.ohos_ic_public_add_norm_filled'))
+        .width(24)
+        .aspectRatio(1)
+        .onClick(() => {
+          this.goodItem.count++
+          // ObjectLink的对象不允许赋值！！！错误示例：
+          // this.goodItem = new GoodItemLinkModel(this.goodItem as GoodItemLinkType)
+        })
+    }
   }
 }
