@@ -21,10 +21,10 @@ struct RequireCase {
       Column() {
         RequireChild({
           message: this.message,
-        }) {
-          Text('这是我尾随闭包传进去的内容')
-          this.parentContent()
-        }
+          defaultContent: () => {
+            this.parentContent()
+          }
+        })
       }
       .width('100%')
     }

@@ -50,7 +50,8 @@
     "pages/07/MusicControlDemo/MusicControlCase",
     "pages/07/SelectImageDemo/SelectImageCase",
     "pages/08/ObservedObjectLinkCase",
-    "pages/08/RequireCase"
+    "pages/08/RequireCase",
+    "pages/08/TrackCase"
   ],
   "window": {
     "designWidth": 720
