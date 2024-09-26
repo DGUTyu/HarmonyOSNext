@@ -52,7 +52,9 @@
     "pages/08/ObservedObjectLinkCase",
     "pages/08/RequireCase",
     "pages/08/TrackCase",
-    "pages/08/ReviewObjectLinkCase"
+    "pages/08/ReviewObjectLinkCase",
+    "pages/09/LocalStorage01",
+    "pages/09/LocalStorage02"
   ],
   "window": {
     "designWidth": 720
