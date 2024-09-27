@@ -1,6 +1,7 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { PreferencesClass } from '../pages/09/PreferencesClass';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -21,9 +22,23 @@ export default class EntryAbility extends UIAbility {
       'name': '雷神'
     }
 
+    // 坑点：在Ability进行持久化不生效！！！
+    // PersistentStorage.persistProp('token',1)
+    // preferences来区分到底加载哪个页面！
+
+    const token = PreferencesClass.getToken(this.context, PreferencesClass.defaultStore, PreferencesClass.tokenKey)
+    let pageUrl = ''
+    if (token === '') {
+      //   没登录过
+      pageUrl = 'pages/09/PreferenceCase'
+    } else {
+      //   登录过
+      pageUrl = 'pages/09/PreferenceResultCase'
+    }
+
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/09/AppStorageCase03', localStorageEntry, (err) => {
+    windowStage.loadContent(pageUrl, localStorageEntry, (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
