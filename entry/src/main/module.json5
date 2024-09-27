@@ -46,6 +46,15 @@
         "label": "$string:EntryAbility2_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background"
+      },
+      {
+        "name": "EntryAbility3",
+        "srcEntry": "./ets/entryability3/EntryAbility3.ets",
+        "description": "$string:EntryAbility3_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility3_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "extensionAbilities": [

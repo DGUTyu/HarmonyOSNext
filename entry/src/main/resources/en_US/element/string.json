@@ -23,6 +23,14 @@
     {
       "name": "EntryAbility2_label",
       "value": "label"
+    },
+    {
+      "name": "EntryAbility3_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility3_label",
+      "value": "label"
     }
   ]
 }

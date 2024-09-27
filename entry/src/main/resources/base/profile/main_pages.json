@@ -57,7 +57,9 @@
     "pages/09/LocalStorage02",
     "pages/09/LocalStorage03",
     "pages/09/AppStorageCase01",
-    "pages/09/AppStorageCase02"
+    "pages/09/AppStorageCase02",
+    "pages/09/AppStorageResultCase",
+    "pages/09/AppStorageCase03"
   ],
   "window": {
     "designWidth": 720
