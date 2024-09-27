@@ -54,7 +54,8 @@
     "pages/08/TrackCase",
     "pages/08/ReviewObjectLinkCase",
     "pages/09/LocalStorage01",
-    "pages/09/LocalStorage02"
+    "pages/09/LocalStorage02",
+    "pages/09/LocalStorage03"
   ],
   "window": {
     "designWidth": 720

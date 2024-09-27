@@ -1,4 +1,6 @@
 import { router } from '@kit.ArkUI'
+import { common, Want } from '@kit.AbilityKit'
+import { localUserInfo } from './LocalStorageModel'
 
 // 1.准备一个对象
 export const localData: Record<string, string> = {
@@ -16,12 +18,18 @@ export const localStorage1 = new LocalStorage(localData)
 const localStorageEntry1 = LocalStorage.getShared()
 
 // @Entry(localStorage1)
-@Entry(localStorageEntry1)
+// @Entry(localStorageEntry1)
+@Entry(localUserInfo)
 @Component
 struct LocalStorage01 {
   //LocalStorage页面级的存储状态 少用，只有卡片才用到
   @LocalStorageLink('messageKey')
   message: string = '老李'
+
+  @LocalStorageLink('avtar')
+  avtar: ResourceStr = ''
+  @LocalStorageLink('nickName')
+  nickName: ResourceStr = ''
 
   build() {
     Column() {
@@ -39,6 +47,25 @@ struct LocalStorage01 {
           router.pushUrl({
             url: 'pages/09/LocalStorage02'
           })
+        })
+
+      Image(this.avtar).width(40).aspectRatio(1).margin(20)
+      Text(this.nickName)
+      Button('修改名称')
+        .onClick(() => {
+          this.nickName = 'hello'
+        })
+      Button('跳转UIAbility')
+        .onClick(() => {
+          // 1.准备一个跳转信息
+          let want: Want = {
+            'deviceId': '',
+            'bundleName': 'cn.android.harmonyosnext',
+            'abilityName': 'EntryAbility2'
+          };
+          //   坑：上面要带分号
+          //   getContext()获取上下文
+          (getContext() as common.UIAbilityContext).startAbility(want)
         })
     }
     .height('100%')

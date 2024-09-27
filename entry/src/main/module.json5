@@ -37,6 +37,15 @@
             ]
           }
         ]
+      },
+      {
+        "name": "EntryAbility2",
+        "srcEntry": "./ets/entryability2/EntryAbility2.ets",
+        "description": "$string:EntryAbility2_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility2_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "extensionAbilities": [

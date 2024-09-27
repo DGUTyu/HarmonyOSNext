@@ -15,6 +15,14 @@
     {
       "name": "My_Name",
       "value": "luyao"
+    },
+    {
+      "name": "EntryAbility2_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility2_label",
+      "value": "label"
     }
   ]
 }
