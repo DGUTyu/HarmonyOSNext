@@ -4,6 +4,9 @@ import { promptAction } from '@kit.ArkUI';
 // import http from '@ohos.net.http';
 // 上下两个包是一样
 
+//引入Axios
+import axios, { AxiosResponse } from '@ohos/axios'
+
 @Entry
 @Component
 struct HttpCase {
@@ -31,12 +34,36 @@ struct HttpCase {
     })
   }
 
+  // OpenHarmony三方库中心仓：https://ohpm.openharmony.cn/#/cn/home
+  // axios网络请求库：https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Faxios
+  // 可以在entry模块下安装，也可以在项目中安装。
+  // 项目中安装步骤：项目右键，打开终端，输入命令：ohpm install @ohos/axios
+  // 安装好后，项目会多出一个 oh_modules 的文件夹，里面包含了你下载的依赖
+  // axios会对响应结果进行包装
+  async sendAxios() {
+    //get请求 需要声明返回结果的类型
+    const res =
+      await axios.get<object, AxiosResponse<object, null>>('https://zhousg.atomgit.net/harmonyos-next/takeaway.json')
+    // res.data是个对象
+    return res
+  }
+
   build() {
     Column() {
       Column() {
         Button('发送Http请求')
           .onClick(() => {
             this.sendHttp()
+          })
+
+        Button('发送Axios请求')
+          .onClick(async () => {
+            // 1.发请求拿结果，需要使用 await与async
+            const res = await this.sendAxios()
+            // 2.提示结果
+            promptAction.showDialog({
+              message: JSON.stringify(res)
+            })
           })
       }
       .height('100%')
