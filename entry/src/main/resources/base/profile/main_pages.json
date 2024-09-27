@@ -55,7 +55,9 @@
     "pages/08/ReviewObjectLinkCase",
     "pages/09/LocalStorage01",
     "pages/09/LocalStorage02",
-    "pages/09/LocalStorage03"
+    "pages/09/LocalStorage03",
+    "pages/09/AppStorageCase01",
+    "pages/09/AppStorageCase02"
   ],
   "window": {
     "designWidth": 720
