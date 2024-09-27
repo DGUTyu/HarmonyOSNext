@@ -1,11 +1,18 @@
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { abilityAccessCtrl, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { PreferencesClass } from '../pages/09/PreferencesClass';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  // async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    // manager管理器
+    const manager = abilityAccessCtrl.createAtManager()
+    // await等待操作的时候进行使用（华为应用商店并不推荐这样申请权限）
+    await manager.requestPermissionsFromUser(this.context, [
+      "ohos.permission.APPROXIMATELY_LOCATION"
+    ])
   }
 
   onDestroy(): void {
@@ -38,7 +45,7 @@ export default class EntryAbility extends UIAbility {
 
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/10/EnvironmentCase', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/10/PermissionCase', localStorageEntry, (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;

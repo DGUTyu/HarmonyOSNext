@@ -31,6 +31,10 @@
     {
       "name": "EntryAbility3_label",
       "value": "label"
+    },
+    {
+      "name": "getLocation",
+      "value": "getLocation"
     }
   ]
 }

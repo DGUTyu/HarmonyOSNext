@@ -62,7 +62,8 @@
     "pages/09/AppStorageCase03",
     "pages/09/PreferenceCase",
     "pages/09/PreferenceResultCase",
-    "pages/10/EnvironmentCase"
+    "pages/10/EnvironmentCase",
+    "pages/10/PermissionCase"
   ],
   "window": {
     "designWidth": 720
