@@ -45,7 +45,7 @@ export default class EntryAbility extends UIAbility {
 
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/10/HttpCase', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/Meituan/MTIndex', localStorageEntry, (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
