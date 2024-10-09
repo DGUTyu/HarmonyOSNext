@@ -1,40 +1,42 @@
+import { FoodItem } from '../models'
+
 @Preview
 @Component
 struct MTFoodItem {
+  item: FoodItem = new FoodItem()
+
   build() {
     Row() {
-      Image('https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/1.jpg')
+      Image(this.item.picture)
         .width(90)
         .aspectRatio(1)
       Column({ space: 5 }) {
-        Text('小份酸汤莜面鱼鱼+肉夹馍套餐')
+        Text(this.item.name)
           .textOverflow({
             overflow: TextOverflow.Ellipsis,
           })
           .maxLines(2)
           .fontWeight(600)
-        Text('酸汤莜面鱼鱼，主料：酸汤、莜面 肉夹馍，主料：白皮饼、猪肉')
+        Text(this.item.description)
           .textOverflow({
             overflow: TextOverflow.Ellipsis,
           })
           .maxLines(1)
           .fontSize(12)
           .fontColor($r("app.color.food_item_second_color"))
-        Text('点评网友推荐')
-          .fontSize(10)
-          .backgroundColor($r("app.color.food_item_label_color"))
-          .fontColor($r("app.color.font_main_color"))
-          .padding({
-            top: 2,
-            bottom: 2,
-            right: 5,
-            left: 5
-          })
-          .borderRadius(2)
+        ForEach(this.item.food_tag_list, (tag: string) => {
+          Text(tag)
+            .fontSize(10)
+            .backgroundColor($r("app.color.food_item_label_color"))
+            .fontColor($r("app.color.font_main_color"))
+            .padding({ top: 2, bottom: 2, right: 5, left: 5 })
+            .borderRadius(2)
+        })
+
         Text() {
-          Span('月销售40')
+          Span('月销售' + this.item.month_saled)
           Span(' ')
-          Span('好评度100%')
+          Span(this.item.like_ratio_desc)
         }
         .fontSize(12)
         .fontColor($r("app.color.black"))
@@ -44,7 +46,7 @@ struct MTFoodItem {
             Span('¥ ')
               .fontColor($r("app.color.font_main_color"))
               .fontSize(10)
-            Span('34.23')
+            Span(this.item.price?.toFixed(2))
               .fontColor($r("app.color.font_main_color"))
               .fontWeight(FontWeight.Bold)
           }
