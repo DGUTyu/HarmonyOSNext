@@ -30,7 +30,12 @@ struct MTFoodItem {
             .fontSize(10)
             .backgroundColor($r("app.color.food_item_label_color"))
             .fontColor($r("app.color.font_main_color"))
-            .padding({ top: 2, bottom: 2, right: 5, left: 5 })
+            .padding({
+              top: 2,
+              bottom: 2,
+              right: 5,
+              left: 5
+            })
             .borderRadius(2)
         })
 
@@ -51,8 +56,11 @@ struct MTFoodItem {
               .fontColor($r("app.color.font_main_color"))
               .fontWeight(FontWeight.Bold)
           }
+
           // 加减按钮
-          MTAddCut()
+          MTAddCut({
+            item: this.item
+          })
         }
         .justifyContent(FlexAlign.SpaceBetween)
         .width('100%')

@@ -1,65 +1,77 @@
+import { FoodItem } from '../models'
+import { CartStore } from '../utils/CartStore'
 import MTCartItem from './MTCartItem'
 
 @Component
 struct MTCart {
-  @Consume
+  @Consume('showCart')
   showCart: boolean
+  @StorageLink('Cart_List')
+  cartList: FoodItem[] = []
 
   build() {
     Column() {
-      //遮罩层
+      // 购物车高度自适应(自定义弹层)
       Blank()
         .onClick(() => {
           this.showCart = false
         })
-
-      //购物车
+        .width('100%')
+        .height('40%')
       Column() {
         Row() {
           Text('购物车')
             .fontSize(12)
-            .fontWeight(600)
           Text('清空购物车')
             .fontSize(12)
-            .fontColor($r("app.color.search_font_color"))
+            .fontColor($r('app.color.search_font_color'))
+            .onClick(() => {
+              CartStore.clearCart()
+            })
         }
         .width('100%')
-        .height(40)
         .justifyContent(FlexAlign.SpaceBetween)
-        .border({
-          width: { bottom: 0.5 },
-          color: $r("app.color.left_back_color")
-        })
-        .margin({ bottom: 10 })
-        .padding({ left: 15, right: 15 })
+        .padding(15)
 
         Column() {
-          List({ space: 30 }) {
-            ForEach([1, 2, 3], () => {
-              ListItem() {
-                MTCartItem()
-              }
+          //List最好要给个容器包裹，否则会进行重绘，影响性能
+          List({ space: 12 }) {
+            ForEach(this.cartList, (item: FoodItem) => {
+              MTCartItem({
+                item
+              })
+            }, (item: FoodItem, index: number) => {
+              return item.id + ''
             })
+            if (this.cartList.length === 0) {
+              ListItem() {
+                Text('暂无更多商品~')
+                  .width('100%')
+                  .padding(20)
+                  .textAlign(TextAlign.Center)
+              }
+            }
           }
+          .padding({
+            left: 15,
+            right: 15,
+            bottom: 120
+          })
           .width('100%')
           .height('100%')
-          .padding({ left: 15, right: 15, bottom: 100 })
-          .divider({
-            strokeWidth: 0.5,
-            color: $r("app.color.left_back_color")
-          })
-        }.width('100%')
+        }
+        .width('100%')
         .layoutWeight(1)
-      }
-      .width('100%')
-      .height('60%')
-      .backgroundColor($r('app.color.white'))
-      .borderRadius({
-        topLeft: 16,
-        topRight: 16
-      })
 
-    }.width('100%')
+      }
+      .borderRadius({
+        topLeft: 6,
+        topRight: 6
+      })
+      .layoutWeight(1)
+      .backgroundColor($r('app.color.white'))
+    }
+    .width('100%')
     .height('100%')
     //半透明色
     .backgroundColor('rgba(0,0,0,0.5)')

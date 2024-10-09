@@ -1,13 +1,18 @@
+import { FoodItem } from '../models'
+import MTAddCut from './MTAddCut'
+
 @Component
 struct MTCartItem {
+  item: FoodItem = new FoodItem()
+
   build() {
     Row() {
-      Image('https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/4.jpeg')
+      Image(this.item.picture)
         .width(60)
         .aspectRatio(1)
         .borderRadius(8)
       Column({ space: 5 }) {
-        Text('小份酸汤莜面鱼鱼+肉夹馍套餐')
+        Text(this.item.name)
           .fontSize(14)
           .textOverflow({
             overflow: TextOverflow.Ellipsis
@@ -18,10 +23,14 @@ struct MTCartItem {
             Span('¥ ')
               .fontColor($r("app.color.font_main_color"))
               .fontSize(10)
-            Span('34.23')
+            Span(this.item.price.toString())
               .fontColor($r("app.color.font_main_color"))
               .fontWeight(FontWeight.Bold)
           }
+
+          MTAddCut({
+            item: this.item
+          })
         }
         .justifyContent(FlexAlign.SpaceBetween)
         .width('100%')
