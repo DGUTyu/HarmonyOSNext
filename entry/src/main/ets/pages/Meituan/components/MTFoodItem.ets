@@ -1,4 +1,5 @@
 import { FoodItem } from '../models'
+import MTAddCut from './MTAddCut'
 
 @Preview
 @Component
@@ -50,6 +51,8 @@ struct MTFoodItem {
               .fontColor($r("app.color.font_main_color"))
               .fontWeight(FontWeight.Bold)
           }
+          // 加减按钮
+          MTAddCut()
         }
         .justifyContent(FlexAlign.SpaceBetween)
         .width('100%')
