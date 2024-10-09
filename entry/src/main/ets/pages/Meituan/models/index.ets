@@ -17,4 +17,5 @@ export class FoodItem {
   tag: string = ""
   month_saled: number = 0
   count: number = 0
+  maxCount?: number
 }

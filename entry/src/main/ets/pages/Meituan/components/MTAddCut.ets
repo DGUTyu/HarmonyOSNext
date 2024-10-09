@@ -52,6 +52,7 @@ struct MTAddCut {
       .onClick(() => {
         CartStore.addCutCart(this.item)
       })
+      .visibility(this.getCount() === this.item.maxCount?.toString() ? Visibility.Hidden : Visibility.Visible)
     }
   }
 }

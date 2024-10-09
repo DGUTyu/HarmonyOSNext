@@ -41,6 +41,7 @@ struct MTCart {
                 item
               })
             }, (item: FoodItem, index: number) => {
+              //复用id,避免图片刷新
               return item.id + ''
             })
             if (this.cartList.length === 0) {

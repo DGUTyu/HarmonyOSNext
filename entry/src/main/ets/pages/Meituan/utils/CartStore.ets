@@ -27,6 +27,7 @@ export class CartStore {
         newItem.picture = item.picture
         newItem.price = item.price
         newItem.count = 1
+        newItem.maxCount = item.count
         list.unshift(newItem)
       } else {
         // 3.2后续添加(数量)
