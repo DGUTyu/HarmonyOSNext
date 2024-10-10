@@ -65,7 +65,8 @@
     "pages/10/EnvironmentCase",
     "pages/10/PermissionCase",
     "pages/10/HttpCase",
-    "pages/Meituan/MTIndex"
+    "pages/Meituan/MTIndex",
+    "pages/11/SafeAreaCase"
   ],
   "window": {
     "designWidth": 720

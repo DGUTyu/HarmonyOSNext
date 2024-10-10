@@ -22,6 +22,13 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    // 通过这种方式最简单，但是相当于给所有的页面都设置了沉浸式，
+    // 如果某些页面不需要设置沉浸式，还需要在页面中通过获取window来关闭
+   // windowStage.getMainWindow().then(window =>{
+   //   window.setWindowLayoutFullScreen(true)
+   // })
+
     //推荐做法
     const localData: Record<string, string> = {
       // 'messageKey2': '雷军',
@@ -45,7 +52,7 @@ export default class EntryAbility extends UIAbility {
 
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/Meituan/MTIndex', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/11/SafeAreaCase', localStorageEntry, (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
