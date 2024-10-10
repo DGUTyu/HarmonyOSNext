@@ -10,6 +10,7 @@ struct SafeAreaCase {
    * 在ability中通过getMainWindow可以获取主窗体，然后通过得到的window对象设置全屏即可实现
    *
    * 2. 使用组件的安全区域扩展的方式
+   * 通过window设置所有页面进行全局的设置，expandSafeArea是个按需的方式，哪个页面需要使用沉浸式，直接自己设置即可。
    */
 
   //页面中关闭沉浸式
@@ -31,37 +32,39 @@ struct SafeAreaCase {
   @State
   bottomSafeHeight: number = 0
 
-  async aboutToAppear() {
-    const win = await window.getLastWindow(getContext())
-    // 关闭沉浸式
-    // win.setWindowLayoutFullScreen(false)
-    // 防止全局没开启，指定页面开启沉浸式
-    win.setWindowLayoutFullScreen(true)
-    // 因为获取的安全区域的大小是px，所以需要用到vp的话 需要使用px2vp的方法来实现
-    // 获取上方安全区高度 38.76923076923077
-    this.topSafeHeight = px2vp(win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height)
-    // 获取下方安全区高度 28
-    this.bottomSafeHeight =
-      px2vp(win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height)
-    AlertDialog.show({
-      message: `
-      上安全区:${this.topSafeHeight}
-      下安全区:${this.bottomSafeHeight}`
-    })
-  }
+  // async aboutToAppear() {
+  //   const win = await window.getLastWindow(getContext())
+  //   // 关闭沉浸式
+  //   // win.setWindowLayoutFullScreen(false)
+  //   // 防止全局没开启，指定页面开启沉浸式
+  //   win.setWindowLayoutFullScreen(true)
+  //   // 因为获取的安全区域的大小是px，所以需要用到vp的话 需要使用px2vp的方法来实现
+  //   // 获取上方安全区高度 38.76923076923077
+  //   this.topSafeHeight = px2vp(win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height)
+  //   // 获取下方安全区高度 28
+  //   this.bottomSafeHeight =
+  //     px2vp(win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height)
+  //   AlertDialog.show({
+  //     message: `
+  //     上安全区:${this.topSafeHeight}
+  //     下安全区:${this.bottomSafeHeight}`
+  //   })
+  // }
 
   build() {
     Column() {
       Image($r('app.media.b'))
+        //作用控制组件扩展其安全区域。
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP])
     }
     .height('100%')
     .width('100%')
-    .padding({
-      top: this.topSafeHeight,
-      bottom: this.bottomSafeHeight
-    })
+    // .padding({
+    //   top: this.topSafeHeight,
+    //   bottom: this.bottomSafeHeight
+    // })
     //开启沉浸式页面自定义安全区颜色
-    .backgroundColor(Color.Green)
-    .backgroundImageSize({ width: '100%', height: '100%' })
+    // .backgroundColor(Color.Green)
+    // .backgroundImageSize({ width: '100%', height: '100%' })
   }
 }
