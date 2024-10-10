@@ -14,6 +14,8 @@ struct HomePage {
           //     router.pushUrl
           this.navStack.pushPath({
             name: 'goodInfo'
+            //测试404页面
+            //name: 'goodInfo2'
           })
         })
       Button('跳转支付页面')

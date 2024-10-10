@@ -4,6 +4,16 @@
       "name":"MyPay",
       "buildFunction": "PayPageBuilder",
       "pageSourceFile": "src/main/ets/pages/12/view/PayPage.ets"
+    },
+    {
+      "name":"MyContacts",
+      "buildFunction": "MyContactsBuilder",
+      "pageSourceFile": "src/main/ets/pages/12/view/ContactsPage.ets"
+    },
+    {
+      "name":"ErrorPage",
+      "buildFunction": "ErrorBuilder",
+      "pageSourceFile": "src/main/ets/pages/12/view/ErrorPage.ets"
     }
   ]
 }

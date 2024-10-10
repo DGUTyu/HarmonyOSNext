@@ -2,6 +2,7 @@ import ContactsPage from './view/ContactsPage'
 import GoodInfoPage from './view/GoodInfoPage'
 import HomePage from './view/HomePage'
 import PayPage from './view/PayPage'
+import { promptAction } from '@kit.ArkUI'
 
 @Entry
 @Component
@@ -64,6 +65,53 @@ struct NavigationCase {
     Image($r('sys.media.ohos_ic_public_scan'))
       .width(24)
       .aspectRatio(1)
+      .onClick(() => {
+        AppStorage.setOrCreate('token', '2024')
+      })
+  }
+
+  //Navigation路由拦截
+  registerInterceptors() {
+    this.navStack.setInterception({
+      //跳转之前的拦截 f:来的信息 t:去的信息
+      willShow: (f, t) => {
+        if (typeof t === 'string') {
+          return
+        }
+        //跳转一个不存在的页面，t.pathInfo则为空
+        if (!t.pathInfo) {
+          //404页面 这里只能用f来跳转
+          promptAction.showToast({
+            message: '拦截到要去404'
+          })
+          return
+        }
+
+        if (t.pathInfo.name === 'goodInfo') {
+          // promptAction.showToast({
+          //   message:'拦截到要去goodInfo'
+          // })
+
+          //拦截
+          const token = AppStorage.get('token')! as string
+          if (token !== '2024') {
+            t.pathStack.pop()
+            promptAction.showToast({
+              message: '商品也拦截去联系人页面'
+            })
+            t.pathStack.pushPath({
+              name: 'MyContacts'
+            })
+          }
+          return
+        }
+      },
+
+      //跳转之后的拦截 场景：鉴权
+      didShow: () => {
+
+      }
+    })
   }
 
   // 和路由完全不是一个东西
@@ -79,9 +127,6 @@ struct NavigationCase {
           } else if (this.active === 'contacts') {
             ContactsPage()
           }
-          Image($r('app.media.b'))
-          Image($r('app.media.b'))
-          Image($r('app.media.b'))
         }
       }
     }
@@ -93,5 +138,23 @@ struct NavigationCase {
     .title('首页')
     .titleMode(NavigationTitleMode.Mini)
     .menus(this.NavMenus)
+    //折叠屏不分列
+    //.mode(NavigationMode.Stack)
+    //折叠屏自动分列
+    .mode(NavigationMode.Auto)
+    //拦截器
+    .onAppear(() => {
+      this.registerInterceptors()
+    })
   }
 }
+
+//总结：
+//1.路由栈是自己维护的：
+// Navigation里面展示的内容不是路由栈的内容，叫导航栏
+//在单列模式下，他是一个页面，在双列模式下，他是左侧边栏，右侧是路由界面
+//2.路由配置表
+//2.1 main-page.json5 ,routerMap
+//2.2 profile routerMap.json
+//3.路由出口展示
+//必须被NavDestination包裹，展示内容可以被路由拦截器拦截
