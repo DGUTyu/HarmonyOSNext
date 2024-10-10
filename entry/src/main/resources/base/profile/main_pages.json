@@ -67,7 +67,8 @@
     "pages/10/HttpCase",
     "pages/Meituan/MTIndex",
     "pages/11/SafeAreaCase",
-    "pages/11/KeyboardCase"
+    "pages/11/KeyboardCase",
+    "pages/11/NavigationAPI9Case"
   ],
   "window": {
     "designWidth": 720
