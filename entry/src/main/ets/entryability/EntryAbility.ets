@@ -1,6 +1,6 @@
 import { abilityAccessCtrl, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+import { KeyboardAvoidMode, window } from '@kit.ArkUI';
 import { PreferencesClass } from '../pages/09/PreferencesClass';
 
 export default class EntryAbility extends UIAbility {
@@ -52,7 +52,13 @@ export default class EntryAbility extends UIAbility {
 
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/11/SafeAreaCase', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/11/KeyboardCase', localStorageEntry, (err) => {
+      //loadContent中设置键盘的避让模式
+      //压缩模式
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE)
+      //偏移模式（默认），当键盘高度改变时，偏移整个页面
+      //windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET)
+
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
