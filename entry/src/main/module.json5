@@ -81,6 +81,8 @@
           }
         ]
       }
-    ]
+    ],
+    //配置路由表
+    "routerMap": "$profile:routerMap"
   }
 }

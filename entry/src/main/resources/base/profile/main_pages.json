@@ -69,7 +69,8 @@
     "pages/11/SafeAreaCase",
     "pages/11/KeyboardCase",
     "pages/11/NavigationAPI9Case",
-    "pages/11/NavigationAPI11Case"
+    "pages/11/NavigationAPI11Case",
+    "pages/12/NavigationCase"
   ],
   "window": {
     "designWidth": 720

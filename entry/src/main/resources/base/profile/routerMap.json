@@ -1,0 +1,9 @@
+{
+  "routerMap": [
+    {
+      "name":"MyPay",
+      "buildFunction": "PayPageBuilder",
+      "pageSourceFile": "src/main/ets/pages/12/view/PayPage.ets"
+    }
+  ]
+}
