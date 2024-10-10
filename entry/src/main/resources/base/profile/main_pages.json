@@ -68,7 +68,8 @@
     "pages/Meituan/MTIndex",
     "pages/11/SafeAreaCase",
     "pages/11/KeyboardCase",
-    "pages/11/NavigationAPI9Case"
+    "pages/11/NavigationAPI9Case",
+    "pages/11/NavigationAPI11Case"
   ],
   "window": {
     "designWidth": 720
