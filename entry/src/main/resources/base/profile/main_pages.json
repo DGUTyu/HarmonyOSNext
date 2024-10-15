@@ -70,7 +70,9 @@
     "pages/11/KeyboardCase",
     "pages/11/NavigationAPI9Case",
     "pages/11/NavigationAPI11Case",
-    "pages/12/NavigationCase"
+    "pages/12/NavigationCase",
+    "pages/12/RouterCase01",
+    "pages/12/RouterCase02"
   ],
   "window": {
     "designWidth": 720
