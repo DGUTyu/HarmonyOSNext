@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "CarAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "CarAbility_label",
+      "value": "label"
+    }
+  ]
+}

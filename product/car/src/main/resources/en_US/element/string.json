@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "CarAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "CarAbility_label",
+      "value": "label"
+    }
+  ]
+}

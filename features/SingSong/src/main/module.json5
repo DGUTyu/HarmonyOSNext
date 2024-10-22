@@ -1,0 +1,16 @@
+{
+  "module": {
+    "name": "SingSong",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1",
+      //可以手动添加
+      "car"
+    ],
+    "deliveryWithInstall": true,
+    "pages": "$profile:main_pages"
+  }
+}

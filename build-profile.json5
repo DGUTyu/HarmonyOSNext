@@ -35,6 +35,34 @@
           ]
         }
       ]
+    },
+    {
+      "name": "car",
+      "srcPath": "./product/car",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SingSong",
+      "srcPath": "./features/SingSong",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "baseUtils",
+      "srcPath": "./common/baseUtils",
     }
   ]
 }

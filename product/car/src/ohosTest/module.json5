@@ -1,0 +1,11 @@
+{
+  "module": {
+    "name": "car_test",
+    "type": "feature",
+    "deviceTypes": [
+      "car"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false
+  }
+}
