@@ -14,7 +14,7 @@ struct ImageCase {
     Column({ space: 10 }) {
       //1.assets
       //图片不给宽度，会默认占满屏幕，居中显示
-      Image('/assets/b.png')//设置了宽度后，高度会按宽度进行缩放
+      Image('../../assets/b.png')//设置了宽度后，高度会按宽度进行缩放
         .width(100)
 
       //2.media 里面的图片需要使用$r，图片不要带后缀

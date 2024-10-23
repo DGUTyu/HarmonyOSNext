@@ -1,0 +1,20 @@
+//这是自动重构的结果，不可用
+//{
+//  "routerMap": [
+//    {
+//      "name":"MyPay",
+//      "buildFunction": "PayPageBuilder",
+//      "pageSourceFile": ":/DevEcoStudioProject/HarmonyOSNext04/product/phone/src/main/ets/pages/12/view/PayPage.ets"
+//    },
+//    {
+//      "name":"MyContacts",
+//      "buildFunction": "MyContactsBuilder",
+//      "pageSourceFile": ":/DevEcoStudioProject/HarmonyOSNext04/product/phone/src/main/ets/pages/12/view/ContactsPage.ets"
+//    },
+//    {
+//      "name":"ErrorPage",
+//      "buildFunction": "ErrorBuilder",
+//      "pageSourceFile": ":/DevEcoStudioProject/HarmonyOSNext04/product/phone/src/main/ets/pages/12/view/ErrorPage.ets"
+//    }
+//  ]
+//}
