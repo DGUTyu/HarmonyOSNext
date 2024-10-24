@@ -1,6 +1,6 @@
-import { abilityAccessCtrl, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { KeyboardAvoidMode, window } from '@kit.ArkUI';
+import { CustomColors, KeyboardAvoidMode, ThemeControl, window } from '@kit.ArkUI';
 import { PreferencesClass } from '../pages/09/PreferencesClass';
 
 export default class EntryAbility extends UIAbility {
@@ -50,9 +50,28 @@ export default class EntryAbility extends UIAbility {
       pageUrl = 'pages/09/PreferenceResultCase'
     }
 
+    //主题设置
+    //1.实现主题类型
+    class ForgiveTheme implements CustomTheme {
+      //主题并不是全部得设置，所以先变成可选的
+      colors?: CustomColors
+
+      constructor(colors: CustomColors) {
+        this.colors = colors
+      }
+    }
+
+    //2.定制一个主题的实例
+    const forgiveTheme = new ForgiveTheme({
+      fontPrimary: '#ff00ff0f'
+    })
+    //3.设置主题
+    ThemeControl.setDefaultTheme(forgiveTheme)
+
+
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
-    windowStage.loadContent('pages/12/RouterPushHsp02', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/13/CompAliveCase', localStorageEntry, (err) => {
       //loadContent中设置键盘的避让模式
       //压缩模式
       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE)

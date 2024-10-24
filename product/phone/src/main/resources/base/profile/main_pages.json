@@ -74,7 +74,8 @@
     "pages/12/RouterCase01",
     "pages/12/RouterCase02",
     "pages/12/RouterPushHsp",
-    "pages/12/RouterPushHsp02"
+    "pages/12/RouterPushHsp02",
+    "pages/13/CompAliveCase"
   ],
   "window": {
     "designWidth": 720
