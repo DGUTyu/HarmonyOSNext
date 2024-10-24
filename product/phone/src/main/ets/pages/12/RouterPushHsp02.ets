@@ -1,6 +1,6 @@
 import { router } from '@kit.ArkUI';
 
-import("@ohos/mySingSong/src/main/ets/pages/Index")
+import("@ohos/mySingSong/src/main/ets/pages/HSPIndex")
 
 @Entry
 @Component
@@ -14,17 +14,32 @@ struct RouterPushHsp02 {
    * 这种操作只适合从hap包 -> hsp一次性的跳转，假设有很多个页面都需要这么跳转，还是采用router
    */
 
+  navPathStack: NavPathStack = new NavPathStack()
+
   build() {
-    Text('使用路径name跳转hsp')
-      .fontSize(25)
-      .fontWeight(FontWeight.Bold)
-      .onClick(() => {
-        router.pushNamedRoute({
-          name: 'hsp_test',
-          params: {
-            id: 123456789
-          }
+    Column() {
+      Text('使用路径name跳转hsp')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          router.pushNamedRoute({
+            name: 'hsp_test',
+            params: {
+              id: 123456789
+            }
+          })
         })
-      })
+
+      Navigation(this.navPathStack) {
+        Button('使用路由配置跳转hsp').onClick(() => {
+          this.navPathStack.pushPath({
+            name: 'HSPPage'
+          })
+        })
+      }
+
+    }.width('100%')
+    .height('100%')
+
   }
 }

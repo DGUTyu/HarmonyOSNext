@@ -2,7 +2,7 @@ import { promptAction, router } from '@kit.ArkUI';
 
 @Entry({ routeName: 'hsp_test' })
 @Component
-export struct Index {
+export struct HSPIndex {
   //要在phone的设置里勾选 Deploy Multi Hap
   @State message: string = 'HSP_index page';
 
