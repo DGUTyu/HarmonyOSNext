@@ -76,6 +76,7 @@
         "label": "$string:PayAbility_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true,
         "exported": true,
         "skills": [
           {

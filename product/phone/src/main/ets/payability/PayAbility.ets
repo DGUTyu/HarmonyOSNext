@@ -6,8 +6,21 @@ import { window } from '@kit.ArkUI';
  * 显示单独的icon
  */
 export default class PayAbility extends UIAbility {
+  //第一次创建，故不会每次都更新
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    //一定有parameters
+    const params = want.parameters!
+    //应用级存储
+    AppStorage.setOrCreate('orderId', params['orderId'])
+  }
+
+  // 第二次及以后的的启动
+  //热启动：之前启动过
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    const params = want.parameters!
+    //应用级存储
+    AppStorage.setOrCreate('orderId', params['orderId'])
   }
 
   onDestroy(): void {
@@ -18,7 +31,7 @@ export default class PayAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', (err) => {
+    windowStage.loadContent('pages/13/PayResult', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
