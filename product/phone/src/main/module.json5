@@ -3,6 +3,7 @@
     "name": "phone",
     "type": "entry",
     "description": "$string:module_desc",
+    //这里切换主Ability
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "phone",
@@ -66,6 +67,26 @@
         "label": "$string:EntryAbility3_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background"
+      },
+      {
+        "name": "PayAbility",
+        "srcEntry": "./ets/payability/PayAbility.ets",
+        "description": "$string:PayAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:PayAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
       }
     ],
     "extensionAbilities": [

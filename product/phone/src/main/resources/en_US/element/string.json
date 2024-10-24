@@ -35,6 +35,14 @@
     {
       "name": "getLocation",
       "value": "getLocation"
+    },
+    {
+      "name": "PayAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "PayAbility_label",
+      "value": "label"
     }
   ]
 }
