@@ -1,13 +1,14 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  //要在phone的设置里勾选 Deploy Multi Hap
+  @State message: string = 'HSP_index page';
 
   build() {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(25)
           .fontWeight(FontWeight.Bold)
       }
       .width('100%')
