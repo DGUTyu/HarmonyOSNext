@@ -1,0 +1,29 @@
+{
+  "module": {
+    "name": "payAbility",
+    "type": "feature",
+    "description": "$string:module_desc",
+    "mainElement": "PayAbilityAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1",
+      "car"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "PayAbilityAbility",
+        "srcEntry": "./ets/payabilityability/PayAbilityAbility.ets",
+        "description": "$string:PayAbilityAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:PayAbilityAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      }
+    ]
+  }
+}

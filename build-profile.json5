@@ -63,6 +63,18 @@
     {
       "name": "baseUtils",
       "srcPath": "./common/baseUtils",
+    },
+    {
+      "name": "payAbility",
+      "srcPath": "./product/payAbility",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }

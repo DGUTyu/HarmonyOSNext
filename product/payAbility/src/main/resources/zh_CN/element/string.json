@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "PayAbilityAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "PayAbilityAbility_label",
+      "value": "label"
+    }
+  ]
+}
