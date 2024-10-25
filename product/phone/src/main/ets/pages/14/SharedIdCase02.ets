@@ -1,3 +1,5 @@
+import { router } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct SharedIdCase02 {
@@ -14,6 +16,17 @@ struct SharedIdCase02 {
           //.sharedTransition('selfImage')
         .sharedTransition('selfImage', {
           duration: 1000
+        })
+
+      Button('push进入1')
+        .onClick(() => {
+          router.pushUrl({
+            url: 'pages/14/SharedIdCase01'
+          })
+        })
+      Button('pop进入1')
+        .onClick(() => {
+          router.back()
         })
     }
     .height('100%')
