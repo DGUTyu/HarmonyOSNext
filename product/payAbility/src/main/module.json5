@@ -22,6 +22,8 @@
         "label": "$string:PayAbilityAbility_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
+        //terminateSelfWithResult
+        "removeMissionAfterTerminate": true,
         "exported": true
       }
     ]

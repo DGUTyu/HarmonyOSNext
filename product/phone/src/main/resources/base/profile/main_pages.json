@@ -77,7 +77,8 @@
     "pages/12/RouterPushHsp02",
     "pages/13/CompAliveCase",
     "pages/13/PayIndex",
-    "pages/13/PayResult"
+    "pages/13/PayResult",
+    "pages/13/PayAbilityDemo"
   ],
   "window": {
     "designWidth": 720

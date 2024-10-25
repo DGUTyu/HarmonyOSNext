@@ -84,7 +84,7 @@ export default class EntryAbility extends UIAbility {
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
     //加载页面
-    windowStage.loadContent('pages/13/PayIndex', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/13/PayAbilityDemo', localStorageEntry, (err) => {
       //loadContent中设置键盘的避让模式
       //压缩模式
       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE)
