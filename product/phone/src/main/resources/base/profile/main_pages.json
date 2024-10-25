@@ -80,7 +80,8 @@
     "pages/13/PayResult",
     "pages/13/PayAbilityDemo",
     "pages/13/AnimationCase",
-    "pages/13/AnimatorCase"
+    "pages/13/AnimatorCase",
+    "pages/13/ImageAnimatorCase"
   ],
   "window": {
     "designWidth": 720
