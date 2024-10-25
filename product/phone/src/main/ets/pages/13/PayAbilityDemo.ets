@@ -21,10 +21,14 @@ struct PayAbilityDemo {
         .onClick(async () => {
           //   1.跳转ability需要参数Want
           let want: Want = {
+            // deviceId为空表示本设备
             deviceId: '',
+            //显式拉起Ability,通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+            //也可以调用第三方的包，只需要知道第三方的包名即可
             bundleName: 'cn.android.harmonyosnext',
             abilityName: 'PayAbilityAbility',
             moduleName: 'payAbility',
+            //传参使用parameters，它是一个object类型，你可以传递你想传的任意数据
             parameters: {
               price: Date.now()
             }
@@ -40,6 +44,7 @@ struct PayAbilityDemo {
           const result = await (getContext() as common.UIAbilityContext).startAbilityForResult(want)
           // 验证代码：注意debugger没问题就行，打印可能存在问题
           this.message += result.want?.parameters!['paySuccess']
+          this.message += result.want?.parameters!['priceNum']
         })
     }
     .height('100%')

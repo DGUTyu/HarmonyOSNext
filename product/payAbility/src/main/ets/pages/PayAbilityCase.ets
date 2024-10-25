@@ -4,10 +4,12 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct PayAbilityCase {
   @State message: string = '分包形式-支付页面';
+  @StorageProp('price')
+  price: number = 0
 
   build() {
     RelativeContainer() {
-      Text(this.message)
+      Text(this.message + this.price)
         .id('PayAbilityCaseHelloWorld')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -25,7 +27,8 @@ struct PayAbilityCase {
               abilityName: 'EntryAbility',
               bundleName: 'cn.android.harmonyosnext',
               parameters: {
-                paySuccess: true
+                paySuccess: true,
+                priceNum: this.price
               }
             }
           })

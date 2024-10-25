@@ -4,7 +4,12 @@ import { window } from '@kit.ArkUI';
 
 export default class PayAbilityAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    AppStorage.setOrCreate<number>("price", want.parameters!["price"] as number)
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    AppStorage.setOrCreate<number>("price", want.parameters!["price"] as number)
   }
 
   onDestroy(): void {
