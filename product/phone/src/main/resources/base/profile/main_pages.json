@@ -86,7 +86,8 @@
     "pages/14/SharedIdCase01",
     "pages/14/SharedIdCase02",
     "pages/14/BindSheetCase",
-    "pages/14/ComAnCase"
+    "pages/14/ComAnCase",
+    "pages/14/GestureCase"
   ],
   "window": {
     "designWidth": 720
