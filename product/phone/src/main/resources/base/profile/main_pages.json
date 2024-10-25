@@ -82,7 +82,9 @@
     "pages/13/AnimationCase",
     "pages/13/AnimatorCase",
     "pages/13/ImageAnimatorCase",
-    "pages/13/AnimatableExtendCase"
+    "pages/13/AnimatableExtendCase",
+    "pages/14/SharedIdCase01",
+    "pages/14/SharedIdCase02"
   ],
   "window": {
     "designWidth": 720
