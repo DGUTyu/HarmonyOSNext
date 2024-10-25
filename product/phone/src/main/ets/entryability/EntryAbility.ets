@@ -78,13 +78,13 @@ export default class EntryAbility extends UIAbility {
       fontPrimary: '#ff00ff0f'
     })
     //3.设置主题
-    ThemeControl.setDefaultTheme(forgiveTheme)
+    //ThemeControl.setDefaultTheme(forgiveTheme)
 
 
     //localStorageEntry作为页面启动的第二个参数
     const localStorageEntry = new LocalStorage(localData)
     //加载页面
-    windowStage.loadContent('pages/13/PayAbilityDemo', localStorageEntry, (err) => {
+    windowStage.loadContent('pages/13/AnimatorCase', localStorageEntry, (err) => {
       //loadContent中设置键盘的避让模式
       //压缩模式
       windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE)

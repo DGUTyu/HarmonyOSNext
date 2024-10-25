@@ -78,7 +78,9 @@
     "pages/13/CompAliveCase",
     "pages/13/PayIndex",
     "pages/13/PayResult",
-    "pages/13/PayAbilityDemo"
+    "pages/13/PayAbilityDemo",
+    "pages/13/AnimationCase",
+    "pages/13/AnimatorCase"
   ],
   "window": {
     "designWidth": 720
