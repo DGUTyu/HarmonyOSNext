@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--  !加tap键  -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>这是我的标题</h1>
+    <img src='https://foruda.gitee.com/avatar/1705232317138324256/1759638_itcast_panpu_1705232317.png' alt="">
+    <button onclick="sendMsg()">按钮</button>
+    <button onclick="openAlbum()">打开相册</button>
+    <script>
+        function changeTitle (){
+            document.querySelector('h1').innerText ='你好'
+        }
+        function changeTitle1 (){
+            document.querySelector('h1').innerText ='世界'
+        }
+        function sendMsg (){
+            objName.objKey()
+        }
+        function openAlbum (){
+            objName2.objKey2(3)
+        }
+    </script>
+</body>
+</html>
