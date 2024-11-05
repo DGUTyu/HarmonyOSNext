@@ -88,7 +88,8 @@
     "pages/14/BindSheetCase",
     "pages/14/ComAnCase",
     "pages/14/GestureCase",
-    "pages/14/HybridCase"
+    "pages/14/HybridCase",
+    "pages/14/DownloadCase"
   ],
   "window": {
     "designWidth": 720
