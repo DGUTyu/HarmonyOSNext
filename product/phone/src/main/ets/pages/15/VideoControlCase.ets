@@ -1,3 +1,7 @@
+import { image } from '@kit.ImageKit'
+import { componentSnapshot } from '@kit.ArkUI'
+import { media } from '@kit.MediaKit'
+
 @Entry
 @Component
 struct VideoControlCase {
@@ -21,6 +25,10 @@ struct VideoControlCase {
   @State
   videoTime: number = 0
   controller: VideoController = new VideoController()
+  videoController: VideoController = new VideoController()
+  @State
+  //组件截图
+  currentImage: image.PixelMap | undefined = undefined
 
   build() {
     Row() {
@@ -29,10 +37,49 @@ struct VideoControlCase {
           Column({ space: 20 }) {
             Video({
               currentProgressRate: this.speed,
-              src: 'https://video19.ifeng.com/video09/2024/05/23/p7199260608686989961-0-122707.mp4'
+              src: 'https://video19.ifeng.com/video09/2024/05/23/p7199260608686989961-0-122707.mp4',
+              controller: this.videoController,
+              previewUri: this.currentImage
             })
               .width('100%')//长宽比，视频会被裁剪
               .aspectRatio(2)
+              .id('video2024')
+              .onPrepared(() => { //获取视频的第一帧
+                //this.videoController.start()
+
+                //旁门左道：不写同步方法，立马停止播放。不推荐，可能有那一帧的噪音
+                // setTimeout(() => {
+                //   this.videoController.pause()
+                // }, 1)
+              })
+              .onAppear(async () => {
+                //内置组件的onAppear等于自定义组件的aboutToAppear
+                //创建视频分析工具
+                const generator = await media.createAVImageGenerator()
+                //设置要解析哪个视频
+                generator.fdSrc = getContext().resourceManager.getRawFdSync('1.mp4')
+                //取视频的截图
+                this.currentImage =
+                  await generator.fetchFrameByTime(1, media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC, {
+                    width: 400,
+                    height: 400
+                  })
+              })
+
+            Button("组件截图")
+              .onClick(() => {
+                // 建议使用this.getUIContext().getComponentSnapshot().get()
+                componentSnapshot.get("video2024", (err, img) => {
+                  if (err) {
+                    console.log("componentSnapshot error: " + JSON.stringify(err))
+                    return;
+                  }
+                  this.currentImage = img
+                }, { scale: 2, waitUntilRenderFinished: true })
+              })
+
+            Image(this.currentImage).width(200).aspectRatio(1).backgroundColor(Color.Gray)
+
             Slider({
               //也可以统一用PlaybackSpeed.Speed_Forward_2_00_X
               value: this.speed,

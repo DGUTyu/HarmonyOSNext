@@ -93,7 +93,8 @@
     "pages/14/HybridHotLoadCase",
     "pages/14/PreviewHotLoadCase",
     "pages/15/VideoCase",
-    "pages/15/VideoControlCase"
+    "pages/15/VideoControlCase",
+    "pages/15/DouyinCase"
   ],
   "window": {
     "designWidth": 720
